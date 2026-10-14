@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The List: NYC's pied-à-terre tax roll</title>
+    <meta name="description" content="Search the 31,541 New York City properties on the Department of Finance's Non-Primary Residence Property Surcharge roll. Official data, official rates, plain English." />
+    <meta property="og:title" content="The List: NYC's pied-à-terre tax roll" />
+    <meta property="og:description" content="31,541 NYC properties on the city's non-primary residence surcharge roll. Search yours, see the rate, and find out how to apply for an exemption." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://thelist.traqqit.com/" />
+    <meta property="og:site_name" content="The List" />
+    <meta property="og:image" content="https://thelist.traqqit.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="31,541 NYC properties are on the pied-à-terre tax roll." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The List: NYC's pied-à-terre tax roll" />
+    <meta name="twitter:description" content="Search the 31,541 NYC properties on the city's non-primary residence surcharge roll. Official data, official rates, plain English." />
+    <meta name="twitter:image" content="https://thelist.traqqit.com/og.png" />
+    <link rel="canonical" href="https://thelist.traqqit.com/" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>" />
+    <!-- The app is client-rendered, so this is the only description of the dataset a crawler
+         can read. Dataset + FAQPage rather than a generic WebSite: the questions below are the
+         ones people actually search in the weeks before the exemption deadline. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Dataset",
+            "name": "NYC Non-Primary Residence Property Surcharge roll (2026)",
+            "description": "The 31,541 New York City properties on the Department of Finance supplemental market value roll published 24 July 2026 for the non-primary residence property surcharge, with DOF's published rate bands applied to each.",
+            "url": "https://thelist.traqqit.com/",
+            "temporalCoverage": "2026-07-24/2028-06-30",
+            "spatialCoverage": "New York City",
+            "license": "https://www.nyc.gov/home/terms-of-use.page",
+            "isAccessibleForFree": true,
+            "creator": { "@type": "Organization", "name": "Traqqit" },
+            "isBasedOn": "https://www.nyc.gov/site/finance/property/property-assessments.page"
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does being on the NYC pied-à-terre tax list mean I owe the surcharge?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. The Department of Finance states the roll \"includes, but is not limited to, those properties that may be subject to the surcharge\". The surcharge is not owed where the property is the primary residence of the owner, a tenant or subtenant, an immediate family member, someone holding a majority interest in an owning LLC or corporation, or the sole beneficiary of a trust. No public record establishes those relationships, so DOF settles it by application."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the deadline to apply for a pied-à-terre surcharge exemption?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "6 October 2026 for homes, condominiums and cooperative units (DOF extended from the original August dates)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How much is the NYC non-primary residence surcharge?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It is a flat percentage of the full DOF market value for the band the property falls into, not a marginal rate on the amount above a threshold. Condominiums and cooperative units: 4% from $1,000,000, 5.25% from $3,000,000, 6.5% from $5,000,000. One-, two- and three-family homes: 0.8% from $5,000,000, 1.05% from $15,000,000, 1.3% from $25,000,000."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why is my co-op on the list when it is worth far less than $1 million?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "DOF assesses a cooperative as one parcel for the entire building, so the building's total value places it on the roll. The threshold applies per apartment. Most co-op buildings on the roll fall under the $1,000,000-per-apartment line and owe nothing."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+    <script defer src="https://stats.traqqit.com/script.js" data-website-id="33f735c0-14a9-4a7c-8134-52920f5e0fb5"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

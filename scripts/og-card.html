@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- Source for the 1200x630 share card. Rendered by `npm run og` (CDP screenshot) into
+     public assets. Kept as HTML rather than hand-written SVG so the type scale and tokens
+     match the site itself. -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      * { box-sizing: border-box; margin: 0; }
+      body {
+        width: 1200px; height: 630px; overflow: hidden;
+        background: #0d1117; color: #e6edf3;
+        font: 400 20px/1.45 "Inter", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        padding: 62px 70px; display: flex; flex-direction: column;
+      }
+      .brand { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; }
+      .brand span { color: #ffb454; }
+      .brand em { font-style: normal; color: #6b7c92; font-weight: 400; font-size: 20px; letter-spacing: 0; }
+      h1 {
+        font-size: 66px; line-height: 1.06; letter-spacing: -0.03em; font-weight: 700;
+        margin: 30px 0 0; max-width: 20ch;
+      }
+      h1 b { color: #ffb454; font-weight: 700; }
+      .sub { margin-top: 20px; font-size: 25px; color: #9fb0c3; max-width: 44ch; line-height: 1.4; }
+      .grow { flex: 1; }
+      .facts { display: flex; gap: 54px; align-items: flex-end; }
+      /* Sans, not mono: tabular figures give the thousands comma a full character width and
+         "5 , 959" reads as a typo at this size. */
+      .fact .v { font-size: 40px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; }
+      .fact .l { font-size: 17px; color: #6b7c92; margin-top: 8px; }
+      .fact.red .v { color: #ff6b6b; }
+      .fact.blue .v { color: #4ea8de; }
+      .url { margin-left: auto; text-align: right; font-size: 21px; color: #e6edf3; font-weight: 600; }
+      .url div { color: #6b7c92; font-weight: 400; font-size: 17px; margin-top: 8px; }
+      .rule { height: 4px; background: #ffb454; width: 82px; margin-top: 34px; border-radius: 2px; }
+    </style>
+  </head>
+  <body>
+    <div class="brand">The <span>List</span> &nbsp;<em>NYC non-primary residence surcharge</em></div>
+    <h1><b>31,541</b> NYC properties are on the pied-à-terre tax roll.</h1>
+    <div class="sub">Search your address. See the rate, what it costs, and how to apply for an exemption.</div>
+    <div class="rule"></div>
+    <div class="grow"></div>
+    <div class="facts">
+      <div class="fact red">
+        <div class="v">$2.90B</div>
+        <div class="l">a year, if nobody is exempt</div>
+      </div>
+      <div class="fact blue">
+        <div class="v">5,959</div>
+        <div class="l">sit just above a rate cliff</div>
+      </div>
+      <div class="url">
+        thelist.traqqit.com
+        <div>Official DOF data &middot; free, no signup</div>
+      </div>
+    </div>
+  </body>
+</html>

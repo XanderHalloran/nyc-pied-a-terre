@@ -1,0 +1,33 @@
+{
+ "fetched_at": "2026-07-31T00:12:48.940Z",
+ "source": "DOF supplemental market value roll FY2027, both tax-class files, unfiltered",
+ "note": "Rows on the same two files the roll is drawn from, so the roll and this count the same kind of unit: a co-op row is a whole building and a condo row is one apartment, on both sides.",
+ "total": 959710,
+ "by_borough": {
+  "Manhattan": {
+   "total": 167591,
+   "class1": 6539,
+   "class2": 161052
+  },
+  "Bronx": {
+   "total": 80254,
+   "class1": 65286,
+   "class2": 14968
+  },
+  "Brooklyn": {
+   "total": 268800,
+   "class1": 211265,
+   "class2": 57535
+  },
+  "Queens": {
+   "total": 322302,
+   "class1": 283684,
+   "class2": 38618
+  },
+  "Staten Island": {
+   "total": 120763,
+   "class1": 117845,
+   "class2": 2918
+  }
+ }
+}

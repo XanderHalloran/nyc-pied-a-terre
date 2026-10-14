@@ -1,0 +1,367 @@
+{
+  "version": "2026-09-03.deadline-extension",
+  "title": "NYC Non-Primary Residence Property Surcharge: official rules",
+  "provenance": {
+    "status": "official",
+    "basis": "Rules, thresholds and rates below are taken from the NYC Department of Finance's own surcharge page (nyc.gov/npsurcharge). The property list is DOF's supplemental market value roll, published 2026-07-24. This is the city's data, not an estimate of it.",
+    "reported_total_flagged": 31000,
+    "reported_total_qualifier": "more than",
+    "sources": [
+      {
+        "label": "NYC Department of Finance: non-primary residence property surcharge (rules, rates, exemptions)",
+        "url": "https://www.nyc.gov/site/finance/property/non-primary-residence-surcharge.page"
+      },
+      {
+        "label": "NYC DOF surcharge eligibility guide",
+        "url": "https://www.nyc.gov/site/finance/property/property-surcharge-eligiblity-tool.page"
+      },
+      {
+        "label": "NYC DOF Property Assessments (the supplemental market value roll downloads)",
+        "url": "https://www.nyc.gov/site/finance/property/property-assessments.page"
+      },
+      {
+        "label": "Mayor's Office: Mayor Mamdani Notifies Property Owners of New Pied-à-Terre Tax (2026-07-23)",
+        "url": "https://www.nyc.gov/mayors-office/news/2026/07/mayor-mamdani-notifies-property-owners-of-new-pied-a-terre-tax"
+      },
+      {
+        "label": "NYC Tax Commission surcharge appeal",
+        "url": "https://www.nyc.gov/site/taxcommission/forms/surcharge-appeal.page"
+      },
+      {
+        "label": "Bloomberg: NYC's initial pied-à-terre tax roll far exceeds early estimates (2026-07-24)",
+        "url": "https://www.bloomberg.com/news/articles/2026-07-24/nyc-s-initial-pied-a-terre-tax-roll-far-exceeds-early-estimates"
+      },
+      {
+        "label": "6sqft: NYC extends pied-à-terre tax deadline again amid lawsuit (2026-08-27)",
+        "url": "https://www.6sqft.com/nyc-extends-pied-a-terre-tax-deadline-again-amid-lawsuit/"
+      }
+    ],
+    "warnings": [
+      "Being on this roll is not a determination. DOF's own page says the roll 'includes, but is not limited to, those properties that may be subject to the surcharge'.",
+      "The surcharge does not apply where the property is a primary residence of the owner, a tenant or subtenant, an immediate family member, a majority-interest holder in an owning entity, or the sole beneficiary of a trust. None of that is visible in this data.",
+      "Values shown are DOF market values, which for condos and co-ops are derived from comparable rental income and are typically well below what a unit would sell for."
+    ],
+    "reported_total_note": "Press-reported size of the initial roll (Bloomberg, 2026-07-24). Deliberately NOT our own row count: filtering the published rolls to DOF criteria yields 31,556 rows and 31,541 records after dedupe, and quoting that back as corroboration would be circular."
+  },
+  "disclaimer": "This tool republishes the NYC Department of Finance supplemental market value roll of 2026-07-24 and applies DOF's own published rate table. It cannot tell you whether a property is finally subject to the surcharge. That turns on primary residence, which is established by application to DOF, not by any public dataset.",
+  "deadlines": [
+    {
+      "id": "homes_condos",
+      "label": "Homes and condominiums",
+      "date": "2026-10-06",
+      "note": "DOF extended the surcharge exemption deadline to 6 October 2026 (was 21 August, then 18 September)."
+    },
+    {
+      "id": "coops",
+      "label": "Cooperative units",
+      "date": "2026-10-06",
+      "note": "Same extended deadline as homes and condos: 6 October 2026 (was 24 August)."
+    }
+  ],
+  "tax_years": "2026-27 and 2027-28",
+  "value_field_priority": [
+    "market_value",
+    "assessed_value"
+  ],
+  "value_field_note": "DOF's full market value (FMV) as published on the supplemental roll is the figure the surcharge is applied to, so no interpretation is required here.",
+  "near_threshold_pct": 0.1,
+  "near_threshold_note": "Records within this fraction of a threshold or a rate-band edge: the properties where a small revaluation changes the bill materially.",
+  "thresholds": [
+    {
+      "id": "condo_coop_initial",
+      "label": "Condominium or co-operative unit",
+      "applies_to": [
+        "condo",
+        "coop"
+      ],
+      "min_value": 1000000,
+      "comparator": "gte",
+      "certainty": "official",
+      "note": "DOF: the surcharge may apply to condominium and cooperative units valued by DOF at $1,000,000 or more. This is the controversial figure - it catches several times as many condo and co-op properties as the $5M line catches houses.",
+      "citation": "nyc.gov/npsurcharge"
+    },
+    {
+      "id": "home_1_3_family",
+      "label": "One-, two-, or three-family home",
+      "applies_to": [
+        "home_1_3"
+      ],
+      "min_value": 5000000,
+      "comparator": "gt",
+      "certainty": "official",
+      "note": "DOF: the surcharge may apply to one-, two-, and three-family homes valued by DOF at more than $5,000,000.",
+      "citation": "nyc.gov/npsurcharge"
+    }
+  ],
+  "residency_rule": {
+    "id": "non_primary_residence",
+    "label": "Non-primary residence",
+    "note": "The surcharge applies only where the property is NOT a primary residence. DOF's exemption is broad: it covers the owner, a tenant or subtenant, an immediate family member of the owner or majority-interest holder, individuals collectively holding a majority interest in an owning LLC, corporation or partnership, and the sole beneficiary of a trust. None of those relationships appear in public property data, which is why this tool never asserts that a property is taxable.",
+    "evidence_fields": [
+      "owner_occupied",
+      "primary_residence",
+      "star_exemption",
+      "owner_mailing_state",
+      "owner_name"
+    ],
+    "evidence_note": "A STAR exemption requires primary residence and is the one strong public signal that a property is exempt. Nothing in public data can establish the reverse.",
+    "entity_owner_patterns": "\\b(LLC|L\\.L\\.C|INC|CORP|CORPORATION|TRUST|LP|LLP|LTD|HOLDINGS|PARTNERS|PARTNERSHIP|ASSOCIATES|VENTURES|PROPERTIES|N\\.?V\\.?|S\\.?A\\.?)\\b",
+    "entity_owner_note": "An entity owner is a weak signal at most, NOT a finding. DOF exempts a property owned by an LLC, corporation, partnership or trust when a majority-interest holder, or the sole trust beneficiary, uses it as a primary residence, and there is a specific affidavit for exactly that. Entity ownership is worth a reporter's attention; it decides nothing.",
+    "entity_owner_applies_to": [
+      "condo",
+      "home_1_3"
+    ],
+    "entity_owner_exclusion_note": "Deliberately NOT applied to co-ops. A co-operative building is owned by its corporation, so the owner of record on every co-op row is an entity by construction. Treating that as a signal would flag every shareholder in the city."
+  },
+  "exemptions": [
+    {
+      "id": "owner",
+      "label": "Owner's primary residence",
+      "note": "The property is the primary residence of its owner.",
+      "effect": "possibly_exempt"
+    },
+    {
+      "id": "tenant",
+      "label": "Tenant or subtenant",
+      "note": "A tenant or subtenant uses the property as their primary residence. Requires the lease plus a rental document, or a Tenant/Subtenant Affidavit plus two rental documents.",
+      "effect": "possibly_exempt"
+    },
+    {
+      "id": "family",
+      "label": "Immediate family member",
+      "note": "An immediate family member of the owner or a majority-interest holder lives there. Requires proof of the relationship: a birth or marriage certificate, or the Immediate Family Member Affidavit.",
+      "effect": "possibly_exempt"
+    },
+    {
+      "id": "majority_interest",
+      "label": "Majority interest in an owning entity",
+      "note": "One or more individuals collectively holding a majority interest in the owning LLC, corporation or partnership use it as a primary residence. Requires the operating agreement or articles plus the Majority Interest Affidavit.",
+      "effect": "possibly_exempt"
+    },
+    {
+      "id": "trust_beneficiary",
+      "label": "Sole beneficiary of a trust",
+      "note": "The sole beneficiary or beneficiaries of an owning trust use it as a primary residence. Requires the trust agreement or a trustee affidavit.",
+      "effect": "possibly_exempt"
+    }
+  ],
+  "exemption_documents_note": "Every exemption route requires primary-residence proof for each occupant named: the most recent federal or state tax return, or any two of a DMV-issued ID, a voter identification card, and other proof of primary residence.",
+  "appeal_note": "If DOF denies an exemption application, or if the property's value looks wrong, the NYC Tax Commission hears surcharge appeals. Asking the Tax Commission to review primary-residence status requires also challenging the value, and rules out applying to DOF for the exemption.",
+  "tax_model": {
+    "status": "OFFICIAL: the rate table below is DOF's published schedule",
+    "headline_note": "Rates are taken from nyc.gov/npsurcharge for tax years 2026-27 and 2027-28. The surcharge is a flat percentage of the DOF market value for the band the property falls into. It is NOT applied only to the amount above a threshold, so crossing a band edge raises the whole bill.",
+    "expected_revenue": 500000000,
+    "expected_revenue_note": "The city's own estimate of what the surcharge will raise annually, against a roll that would be worth several times that if nobody claimed an exemption. The difference is the share DOF expects to be exempted.",
+    "existing": {
+      "label": "Existing NYC property tax",
+      "note": "NYC's ordinary property tax is taxable assessed value x the class tax rate. The surcharge roll carries no assessed value, so this figure is joined from DOF's own FY2027 assessment roll (8y4t-faws, curtxbtot), the billable figure a real bill is computed on, after transitional phase-in and assessment caps. Where that join misses, assessed value falls back to the statutory ratio and the record says so.",
+      "fiscal_year": "FY2025",
+      "rate_note": "Class tax rates are set annually by the City Council. These are FY2025 figures and should be refreshed each year.",
+      "class_tax_rates": {
+        "1": 0.20085,
+        "2": 0.125,
+        "3": 0.12289,
+        "4": 0.10592
+      },
+      "assessment_ratio": {
+        "1": 0.06,
+        "2": 0.45
+      },
+      "assessment_ratio_note": "Statutory levels of assessment, used only as a fallback when DOF publishes no taxable value for a lot. They ignore the Class 1 caps, which is why the actual roll is preferred: estimating from the ratio overstated the tax on a 1-3 family home by a median 2.6x.",
+      "unmodelled": [
+        "Exemptions already netted out of DOF taxable value are reflected; any granted after the FY2027 roll are not",
+        "The co-op/condo property tax abatement (17.5%-28.1%), which only applies to primary residences, and so by definition would not apply to a property actually liable for this surcharge",
+        "Class tax rates are the latest adopted; the City Council sets new rates each year and the surcharge covers 2026-27 and 2027-28",
+        "A co-op row is the building, so its assessed value is divided by DOF apartment count to sit beside a per-apartment surcharge"
+      ]
+    },
+    "surcharge": {
+      "label": "Non-primary residence surcharge",
+      "certainty": "official",
+      "basis": "value_used",
+      "basis_note": "Applied to the DOF market value published on the supplemental roll, the same figure the threshold test uses.",
+      "structure": "flat_rate_on_full_value",
+      "structure_note": "A flat percentage of the FULL DOF market value, chosen by which band the value falls into. Not marginal: a condo at $2,999,999 pays 4% of the whole value, and one at $3,000,001 pays 5.25% of the whole value, about $52,000 more for one dollar of value.",
+      "bands": [
+        {
+          "applies_to": [
+            "home_1_3"
+          ],
+          "min": 5000000,
+          "max": 15000000,
+          "rate": 0.008,
+          "label": "Home, $5M–$15M"
+        },
+        {
+          "applies_to": [
+            "home_1_3"
+          ],
+          "min": 15000000,
+          "max": 25000000,
+          "rate": 0.0105,
+          "label": "Home, $15M–$25M"
+        },
+        {
+          "applies_to": [
+            "home_1_3"
+          ],
+          "min": 25000000,
+          "max": null,
+          "rate": 0.013,
+          "label": "Home, $25M and over"
+        },
+        {
+          "applies_to": [
+            "condo",
+            "coop"
+          ],
+          "min": 1000000,
+          "max": 3000000,
+          "rate": 0.04,
+          "label": "Condo/co-op, $1M–$3M"
+        },
+        {
+          "applies_to": [
+            "condo",
+            "coop"
+          ],
+          "min": 3000000,
+          "max": 5000000,
+          "rate": 0.0525,
+          "label": "Condo/co-op, $3M–$5M"
+        },
+        {
+          "applies_to": [
+            "condo",
+            "coop"
+          ],
+          "min": 5000000,
+          "max": null,
+          "rate": 0.065,
+          "label": "Condo/co-op, $5M and over"
+        }
+      ],
+      "exempt_note": "A property with an owner-occupancy signal is shown with the surcharge it would face if no exemption applied. An approved exemption removes it entirely."
+    }
+  },
+  "classification": {
+    "note": "NYC DOF building-class codes. Prefix match, longest first. Used only when a source file gives no explicit property type.",
+    "building_class_prefixes": {
+      "R0": "condo",
+      "R1": "condo",
+      "R2": "condo",
+      "R3": "condo",
+      "R4": "condo",
+      "R5": "condo",
+      "R6": "condo",
+      "R7": "condo",
+      "R8": "condo",
+      "R9": "condo",
+      "RR": "condo",
+      "RG": "condo",
+      "RH": "condo",
+      "RW": "condo",
+      "C6": "coop",
+      "C8": "coop",
+      "D0": "coop",
+      "D4": "coop",
+      "A": "home_1_3",
+      "B": "home_1_3",
+      "C0": "home_1_3",
+      "S0": "home_1_3",
+      "S1": "home_1_3",
+      "S2": "home_1_3"
+    },
+    "tax_class_hints": {
+      "1": "home_1_3",
+      "2": "condo_or_coop",
+      "note": "Tax class 1 is broadly 1–3 family homes; tax class 2 covers co-ops, condos and 4+ unit rentals."
+    }
+  },
+  "type_labels": {
+    "condo": "Condominium",
+    "coop": "Co-operative",
+    "home_1_3": "1–3 family home",
+    "unknown": "Unknown / unclassified"
+  },
+  "review_triggers": [
+    {
+      "id": "missing_value",
+      "label": "No usable valuation",
+      "note": "Cannot be tested against any threshold."
+    },
+    {
+      "id": "unknown_type",
+      "label": "Property type not determinable",
+      "note": "No explicit type, no recognised building class, no usable tax class."
+    },
+    {
+      "id": "near_cutoff",
+      "label": "Close to a threshold or rate band edge",
+      "note": "A small change in DOF's valuation would move the bill a long way, because the rate applies to the whole value."
+    },
+    {
+      "id": "no_occupancy_evidence",
+      "label": "No occupancy evidence",
+      "note": "Nothing in the public data says who lives here, and that is the fact that decides the surcharge."
+    },
+    {
+      "id": "weak_geocode",
+      "label": "Position approximated",
+      "note": "Mapped to the block, ZIP or borough rather than the exact parcel."
+    },
+    {
+      "id": "listed_but_below",
+      "label": "On the roll but below the published threshold",
+      "note": "DOF's roll includes properties beyond those that may be subject to the surcharge, so this is expected rather than an anomaly."
+    },
+    {
+      "id": "coop_building",
+      "label": "Co-op reported at building level",
+      "note": "DOF assesses a co-op as one parcel for the whole building; the value shown is the building's, not a single apartment's."
+    }
+  ],
+  "appeals": {
+    "status": "official",
+    "basis": "NYC Tax Commission, Non-Primary Residence Surcharge Appeals, General Instructions. Quoted deadlines are for the 2026/27 and 2027/28 tax years.",
+    "citation": "https://www.nyc.gov/site/taxcommission/forms/surcharge-appeal.page",
+    "contact": "TCSurchargeAppeal@oata.nyc.gov",
+    "contact_note": "Tax Commission surcharge appeals only. Allow five days for a reply. Questions do not extend a filing deadline, and staff cannot give legal advice.",
+    "grounds": [
+      {
+        "id": "market_value",
+        "label": "DOF's market value is too high",
+        "note": "The surcharge is a flat percentage of the full DOF market value, so the value decides both whether the threshold is met and which rate band applies. A market value appeal must be filed by the March deadline for the property's tax class, whatever happens with residency."
+      },
+      {
+        "id": "residency",
+        "label": "The property is a primary residence",
+        "note": "The Tax Commission can review whether the property is exempt, not just what it is worth. You can raise residency there whether or not you first went to DOF."
+      }
+    ],
+    "deadlines": [
+      {
+        "tax_class": "2",
+        "label": "Tax Class Two (condominiums and co-operatives)",
+        "date": "2027-03-01"
+      },
+      {
+        "tax_class": "1",
+        "label": "Tax Class One (1-3 family homes)",
+        "date": "2027-03-15"
+      }
+    ],
+    "deadline_note": "Deadline to file with the Tax Commission when appealing DOF's residency and market value determinations together.",
+    "dof_first_note": "If you appeal DOF's residency determination to DOF first, you may appeal its FINAL determination to the Tax Commission by the applicable March deadline or within 30 days of the date on DOF's final determination notice, whichever is LATER. A market value appeal still has to meet the March deadline regardless.",
+    "dof_first_grace_days": 30,
+    "independent_note": "If you do not appeal residency at all, you can still challenge the market value at the Tax Commission by the applicable March deadline."
+  },
+  "status_update": {
+    "id": "2026-10-06-deadline",
+    "as_of": "2026-09-03",
+    "headline": "Exemption deadline extended to 6 October 2026",
+    "body": "DOF pushed the exemption application deadline to 6 October 2026 for homes, condos and co-ops. A homeowner lawsuit briefly paused the rollout; the city appealed and is continuing. The surcharge itself is not cancelled — first bills are still due 1 January 2027.",
+    "source_label": "nyc.gov/npsurcharge",
+    "source_url": "https://www.nyc.gov/site/finance/property/non-primary-residence-surcharge.page"
+  }
+}

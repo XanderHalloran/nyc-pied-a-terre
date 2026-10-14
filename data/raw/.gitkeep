@@ -1,0 +1,2 @@
+Drop NYC Department of Finance exports here (CSV, TSV, JSON, GeoJSON, or XLSX with `npm i xlsx`),
+then run `npm run ingest`. Files in this directory are gitignored.

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# 21 MB of property records. Crawling it gains nothing — the indexable content is the pages below.
+Disallow: /properties.json
+Disallow: /boroughs.geojson
+
+# Filter/share URLs are client-rendered shells. Google soft-404'd ?status=listed.
+Disallow: /*?
+
+Sitemap: https://thelist.traqqit.com/sitemap.xml

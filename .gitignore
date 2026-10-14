@@ -1,0 +1,18 @@
+node_modules
+dist
+
+# Source files and the dataset built from them are regenerable: npm run setup
+data/raw/*
+!data/raw/.gitkeep
+data/processed/properties.json
+data/processed/raw-records.json
+
+# boroughs.geojson IS committed — it needs the network to rebuild
+data/processed/public-data.json
+
+# Fetched lookups (~110 MB) — rebuild with: npm run assess / npm run sales
+data/assess-by-bbl.json
+data/sales-by-bbl.json
+# StreetEasy-supplied export + its derived index: theirs, not ours to republish
+data/latest_listing.csv
+data/listings-by-address.json
