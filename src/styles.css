@@ -44,11 +44,11 @@
   --line-2: #bcc6d3;
   --fg: #141a21;
   --fg-2: #4b5768;
-  --fg-3: #77839a;
-  --accent: #b45309;
-  --accent-2: #1d6fa5;
+  --fg-3: #626c7f;
+  --accent: #a74d08;
+  --accent-2: #1b689b;
   --danger: #c02626;
-  --warn: #a16207;
+  --warn: #995d07;
   --ok: #3f7d10;
   /* Darker steps of the same five hues: the dark-mode set sits at 2–3:1 on white and would fail
      the contrast check here. Same order, separately validated. */
@@ -86,7 +86,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible
   outline: 2px solid var(--accent-2);
   outline-offset: 1px;
 }
-button.primary { background: var(--accent); color: #16202b; border-color: transparent; font-weight: 600; }
+button.primary { background: var(--accent); color: #fff; border-color: transparent; font-weight: 600; }
 button.ghost { background: transparent; }
 button[aria-pressed='true'] { background: var(--accent-2); border-color: var(--accent-2); color: #06121c; font-weight: 600; }
 button:disabled { opacity: 0.45; cursor: not-allowed; }
