@@ -524,7 +524,7 @@ pre.json {
      competing with the sentence for one flex row. On a phone it is simply a block. */
   .disclaimer { display: block; padding: 7px 10px; }
   .disclaimer .grow { display: block; margin: 3px 0 5px; }
-  .disclaimer .due { margin-right: 10px; }
+  .disclaimer .due { margin-right: 10px; white-space: normal; }
 
   .body { flex-direction: column; }
   .main { flex: 1; min-height: 0; }
