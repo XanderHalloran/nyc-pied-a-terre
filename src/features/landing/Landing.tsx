@@ -49,7 +49,7 @@ export default function Landing({ rows, onSearch, onPick, onAbout }: Props) {
   const ratio = Math.max(2, Math.round(t.surcharge / expected))
 
   return (
-    <div className="landing">
+    <main className="landing">
       <div className="landing-in">
         {/* Deliberately not .mono — tabular figures give the thousands comma a full character
             width, and "31 , 541" at 28px reads as a typo. */}
@@ -132,6 +132,6 @@ export default function Landing({ rows, onSearch, onPick, onAbout }: Props) {
           </p>
         </div>
       </div>
-    </div>
+    </main>
   )
 }

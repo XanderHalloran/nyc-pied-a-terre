@@ -199,7 +199,7 @@ export default function App() {
         </details>
       </header>
 
-      <div className="disclaimer">
+      <aside className="disclaimer" aria-label="About the roll">
         {expert ? (
           <>
             <strong>The roll, not a determination.</strong>
@@ -230,7 +230,7 @@ export default function App() {
         )}
         <span className="dim" style={{ fontSize: 12 }}>Roll as published 24 July 2026</span>
         <button className="ghost small" onClick={() => setView('method')}>{expert ? 'Read the method' : 'What does that mean?'}</button>
-      </div>
+      </aside>
 
       {!entered ? (
         <Landing
@@ -240,7 +240,7 @@ export default function App() {
           onAbout={() => setView('method')}
         />
       ) : (
-      <div className="body">
+      <main className="body">
         <FilterPanel
           f={filters} patch={patch} setFilters={setFilters} boroughs={boroughNames}
           total={rows.length} shown={filtered.length} expert={expert}
@@ -368,7 +368,7 @@ export default function App() {
             onToggleFav={onFav}
           />
         )}
-      </div>
+      </main>
       )}
 
       {view === 'method' && <Methodology meta={meta} rows={rows} onClose={() => setView(null)} />}
