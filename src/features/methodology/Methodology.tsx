@@ -376,6 +376,9 @@ export default function Methodology({ meta, rows, onClose }: { meta: Dataset['me
         Rules live in <code>src/lib/policy.json</code>. Edit thresholds, the valuation priority or the building-class
         map, refresh, and every flag, explanation and count above recomputes. No code change, no re-ingest.
       </p>
+      <p className="small muted">
+        <a href="https://traqqit.com/accessibility.html">Accessibility statement</a>
+      </p>
     </Modal>
   )
 }
